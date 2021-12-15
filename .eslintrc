@@ -1,0 +1,20 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es2021": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "arrow-parens": "off",
+    "require-jsdoc": "off"
+  },
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  }
+}
