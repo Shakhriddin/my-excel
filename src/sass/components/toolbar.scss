@@ -1,0 +1,39 @@
+.toolbar {
+  @include position(absolute, top, $header-height, left, 0);
+  width: 100%;
+  height: $toolbar-height;
+  border-top: 2px solid rgba(0, 0, 0, .3);
+  border-bottom: 2px solid rgba(0, 0, 0, .3);
+  display: flex;
+  align-items: center;
+
+  &__btn {
+    border: none;
+    font-size: 1.1rem;
+    padding: .3rem .5rem;
+    border-radius: .25rem;
+    color: #333333;
+    transition: all .2s ease;
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      transform: scale(1.03);
+    }
+
+    &:not(:last-child) {
+      margin-right: .5rem;
+
+      &:after {
+        content: '';
+        @include position(absolute, top, 50%, right, -.25rem);
+        transform: translate(0, -50%);
+        width: 2px;
+        height: 80%;
+        background-color: rgba(0, 0, 0, .3);
+        border-radius: 1rem;
+      }
+    }
+  }
+}

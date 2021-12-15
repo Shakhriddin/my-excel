@@ -1,0 +1,59 @@
+body {
+  overflow-x: hidden;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+
+  &::-webkit-scrollbar {
+    width: .5rem;
+
+    &-track {
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    &-thumb {
+      background: rgba(0, 0, 0, .2);
+      border-radius: 1rem;
+      padding: .5rem;
+    }
+  }
+}
+
+.container {
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.excel {
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  background-color: #f8f8f8;
+}
+
+@media only screen and (max-width: $xl) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+@media only screen and (max-width: $lg) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media only screen and (max-width: $md) {
+  .container {
+    max-width: 100%;
+    padding: 0 0.4rem;
+  }
+}
+
+@media only screen and (max-width: $sm) {
+  body {
+    &.--lock {
+      padding-right: 0;
+    }
+  }
+}

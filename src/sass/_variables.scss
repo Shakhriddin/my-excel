@@ -1,0 +1,30 @@
+// Breakpoints
+$minWidth: 320px;
+$maxWidth: 1920;
+$maxWidthContainer: 1310;
+$xl: 1199.98px;
+$lg: 991.98px;
+$md: 767.98px;
+$sm: 575.98px;
+$breakpoints: (
+  xs: 0,
+  sm: 575.98px,
+  md: 767.98px,
+  lg: 991.98px,
+  xl: 1199.98px,
+  xxl: 1399.98px,
+);
+
+// Colors
+$green: #03a676;
+$lightGreen: rgba(36, 234, 175, 0.76);
+$red: #ff3f52;
+
+// Height
+$header-height: 4rem;
+$toolbar-height: 3rem;
+$formula-height: 2rem;
+$info-cell-width: 2.5rem;
+$row-height: 1.5rem;
+$cell-width: 6rem;
+$db-header-height: 4rem;
