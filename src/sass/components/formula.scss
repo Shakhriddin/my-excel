@@ -1,0 +1,48 @@
+.formula {
+  @include position(absolute, top, $header-height+$toolbar-height, left, 0);
+  width: 100%;
+  height: $formula-height;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, .3);
+
+  &__info {
+    position: relative;
+    width: $info-cell-width;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: monospace;
+    color: #888;
+    padding: 0 .5rem;
+
+    &:after {
+      content: '';
+      @include position(absolute, top, 50%, right, 0);
+      transform: translate(0, -50%);
+      width: 1.5px;
+      height: 70%;
+      background-color: rgba(0, 0, 0, .3);
+      border-radius: 1rem;
+    }
+
+    sub {
+      font-weight: 600;
+      font-size: 1.3rem;
+      font-family: serif;
+    }
+  }
+
+  &__input {
+    flex: 1 1 auto;
+    height: 100%;
+    padding: .3rem .5rem;
+    caret-color: $green;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include selection;
+  }
+}
