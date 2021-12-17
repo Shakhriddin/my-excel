@@ -1,5 +1,5 @@
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 
@@ -21,7 +21,7 @@ body {
 .container {
   max-width: $maxWidthContainer + px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .excel {

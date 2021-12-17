@@ -1,11 +1,13 @@
 .table {
   @include position(absolute, top, $header-height+$toolbar-height+$formula-height, left, 0);
   width: 100%;
-  overflow-x: auto;
+  max-height: calc(100% - 144px);
+  overflow: auto;
   padding-bottom: .05rem;
 
   &::-webkit-scrollbar {
     height: .5rem;
+    width: .5rem;
 
     &-track {
       background-color: rgba(0, 0, 0, .1);
@@ -15,6 +17,10 @@
       background: rgba(0, 0, 0, .2);
       border-radius: 1rem;
       padding: .5rem;
+
+      &:hover {
+        background: rgba(0, 0, 0, .4);
+      }
     }
   }
 
@@ -22,7 +28,6 @@
     display: flex;
     min-height: 1.25rem;
     height: $row-height;
-
   }
 
   &__info {
@@ -44,7 +49,7 @@
     @include flex-center;
     width: $cell-width;
     min-width: 2.5rem;
-    border: 1px solid rgba(0, 0, 0, .3);
+    border: 1px solid rgba(0, 0, 0, .4);
     border-top: 0;
     border-left: 0;
     @include selection;
@@ -55,7 +60,7 @@
     min-width: 2.5rem;
     padding: .3rem;
     height: 100%;
-    border: 1px solid rgba(0, 0, 0, .3);
+    border: 1px solid rgba(0, 0, 0, .15);
     border-top: 0;
     border-left: 0;
     white-space: nowrap;
@@ -71,6 +76,4 @@
 
     @include selection;
   }
-
-
 }
