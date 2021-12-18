@@ -30,15 +30,21 @@
     height: $row-height;
   }
 
-  &__info {
+  &__line-number {
     @include flex-center;
+    position: relative;
     flex: 0 0 $info-cell-width;
     width: $info-cell-width;
     height: 100%;
+    color: #888888;
     background: #f8f9fa;
     border: 1px solid rgba(0, 0, 0, .3);
     border-top: 0;
-    @include selection;
+    cursor: default;
+
+    &::selection {
+      background: none;
+    }
   }
 
   &__data {
@@ -47,12 +53,17 @@
 
   &__column {
     @include flex-center;
+    position: relative;
     width: $cell-width;
     min-width: 2.5rem;
     border: 1px solid rgba(0, 0, 0, .4);
     border-top: 0;
     border-left: 0;
-    @include selection;
+    cursor: default;
+
+    &::selection {
+      background: none;
+    }
   }
 
   &__cell {
@@ -76,4 +87,33 @@
 
     @include selection;
   }
+
+  &__col-resize, &__row-resize {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: $green;
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity .1s ease-in-out;
+    z-index: 100;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__col-resize {
+    top: 0;
+    width: 4px;
+    cursor: col-resize;
+  }
+
+  &__row-resize {
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    cursor: row-resize;
+  }
+
 }

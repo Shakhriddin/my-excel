@@ -9,26 +9,29 @@
   &__info {
     position: relative;
     width: $info-cell-width;
-    font-size: 1.5rem;
+    height: 100%;
+    font-size: 1.8rem;
     font-weight: bold;
     font-style: italic;
-    font-family: monospace;
-    color: #888;
+    font-family: serif;
+    color: rgba(0, 0, 0, .2);
     padding: 0 .5rem;
+    @include flex-center;
 
     &:after {
       content: '';
       @include position(absolute, top, 50%, right, 0);
-      transform: translate(0, -50%);
+      transform: translate(0%, -50%);
       width: 1.5px;
       height: 70%;
       background-color: rgba(0, 0, 0, .3);
       border-radius: 1rem;
     }
 
-    sub {
+    span {
+      margin-top: .2rem;
       font-weight: 600;
-      font-size: 1.3rem;
+      font-size: .9rem;
       font-family: serif;
     }
   }
@@ -38,6 +41,9 @@
     height: 100%;
     padding: .3rem .5rem;
     caret-color: $green;
+    vertical-align: center;
+    font-size: 1.1rem;
+    color: #333333;
 
     &:focus {
       outline: none;
