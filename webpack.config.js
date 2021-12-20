@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -71,10 +72,18 @@ function plugins() {
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './favicon.ico',
+          to: path.resolve(__dirname, 'dist'),
+        },
+      ],
+    }),
   ];
 
   if (isProd) {
-    plugins.push(new webpack.HotModuleReplacementPlugin());
+    base.push(new webpack.HotModuleReplacementPlugin());
   }
 
   return base;
@@ -97,7 +106,7 @@ module.exports = {
     port: 3000,
     hot: isDev,
   },
-  devtool: isDev ? 'source-map' : '',
+  devtool: isDev ? 'source-map' : false,
   plugins: plugins(),
   module: {
     rules: [

@@ -3,10 +3,11 @@ import {ExcelComponent} from '../../core/ExcelComponent';
 export class HeaderComponent extends ExcelComponent {
   static ClassName = ['excel__header', 'header', 'container'];
 
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'HeaderComponent',
       listeners: ['input'],
+      ...options,
     });
   }
 
