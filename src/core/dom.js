@@ -14,6 +14,14 @@ class Dom {
     return this.$element.outerHTML.trim();
   }
 
+  textContent(text) {
+    if (typeof text === 'string') {
+      return this.$element.textContent = text;
+    }
+    return this.$element.textContent.trim();
+  }
+
+
   clear() {
     this.html('');
     return this;
@@ -39,6 +47,10 @@ class Dom {
     return this.$element.dataset;
   }
 
+  find(selector) {
+    return $(this.$element.querySelector(selector));
+  }
+
   findAll(selector) {
     return this.$element.querySelectorAll(selector);
   }
@@ -53,6 +65,32 @@ class Dom {
       this.$element.appendChild(element);
     }
 
+    return this;
+  }
+
+  addClass(className) {
+    this.$element.classList.add(className);
+    return this;
+  }
+
+  removeClass(className) {
+    this.$element.classList.remove(className);
+    return this;
+  }
+
+  getDataID(parse) {
+    if (parse) {
+      const parsed = this.getDataID().split(':');
+      return {
+        row: +parsed[0],
+        col: +parsed[1],
+      };
+    }
+    return this.data.id;
+  }
+
+  focus() {
+    this.$element.focus();
     return this;
   }
 

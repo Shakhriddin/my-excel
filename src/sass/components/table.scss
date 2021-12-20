@@ -28,6 +28,14 @@
     display: flex;
     min-height: 1.25rem;
     height: $row-height;
+
+    &:nth-child(1) {
+      .table__line-number, .table__column {
+        border-top: 1px solid rgba(0, 0, 0, .3);
+
+      }
+
+    }
   }
 
   &__line-number {
@@ -41,6 +49,7 @@
     border: 1px solid rgba(0, 0, 0, .3);
     border-top: 0;
     cursor: default;
+
 
     &::selection {
       background: none;
@@ -61,6 +70,7 @@
     border-left: 0;
     cursor: default;
 
+
     &::selection {
       background: none;
     }
@@ -80,9 +90,10 @@
     caret-color: $green;
 
     &.--selected {
-      outline: 2px solid $green;
+      outline: 3px solid $green;
       outline-offset: -1.5px;
       border-radius: .15rem;
+      box-shadow: 0 0 0.3rem .1rem rgba(0, 0, 0, .2);
     }
 
     @include selection;

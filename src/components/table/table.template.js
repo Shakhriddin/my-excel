@@ -3,7 +3,6 @@ const CODES = {
   Z: 90,
 };
 
-
 function createColumn(col, index) {
   return `<div class="table__column" data-type="resizable" data-col="${index}">
       ${col}
@@ -11,10 +10,13 @@ function createColumn(col, index) {
     </div>`;
 }
 
-function createCell(_, index) {
-  return `
-    <div class="table__cell" contenteditable="true" data-col="${index}"></div>
+function createCell(row) {
+  return function toCell(_, col) {
+    return `
+    <div class="table__cell" data-col="${col}" data-id="${row}:${col}"
+    contenteditable="true"  spellcheck="false" tabindex="${row}"></div>
   `;
+  };
 }
 
 function createRow(rowIndex, content) {
@@ -46,12 +48,12 @@ export function createTable(rowsCount = 15) {
 
   rows.push(createRow(null, cols));
 
-  for (let index = 0; index < rowsCount; index++) {
+  for (let row = 0; row < rowsCount; row++) {
     const cells = new Array(columnsCount)
         .fill('')
-        .map(createCell)
+        .map(createCell(row))
         .join('');
-    rows.push(createRow(index + 1, cells));
+    rows.push(createRow(row + 1, cells));
   }
 
   return rows.join('');
