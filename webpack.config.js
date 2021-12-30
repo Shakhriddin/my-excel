@@ -78,6 +78,10 @@ function plugins() {
           from: './favicon.ico',
           to: path.resolve(__dirname, 'dist'),
         },
+        {
+          from: './img',
+          to: path.resolve(__dirname, 'dist/img'),
+        },
       ],
     }),
   ];

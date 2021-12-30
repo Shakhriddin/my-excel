@@ -7,6 +7,7 @@ export class FormulaComponent extends ExcelComponent {
     super($root, {
       name: 'FormulaComponent',
       listeners: ['input', 'keydown'],
+      subscribe: ['currentText'],
       ...options,
     });
   }
@@ -26,14 +27,21 @@ export class FormulaComponent extends ExcelComponent {
 
   init() {
     super.init();
-    const formulaInput = this.$root.find('#formula__input');
+    this.$formulaInput = this.$root.find('#formula__input');
     this.$subscribe('TableComponent:select', ($cell) => {
-      return formulaInput.textContent($cell.textContent());
+      this.$formulaInput.textContent($cell.data.value);
+    });
+    this.$subscribe('ToolbarComponent:click', style => {
+      return this.$formulaInput.css(style);
     });
   }
 
   onInput(event) {
     this.$emit('FormulaComponent:input', event.target.textContent.trim());
+  }
+
+  storeChanged({currentText}) {
+    this.$formulaInput.textContent(currentText);
   }
 
   onKeydown(event) {

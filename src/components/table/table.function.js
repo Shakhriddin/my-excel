@@ -1,4 +1,29 @@
 import {range} from '../../core/utils';
+import {parse} from '../../core/parse';
+
+export function initTable($root, {colState, rowState, dataState}) {
+  if (colState) {
+    Object.keys(colState).forEach(id => {
+      $root.findAll(`[data-col="${id}"]`)
+          .forEach(cell => {
+            cell.style.width = colState[id] + 'px';
+          });
+    });
+  }
+  if (rowState) {
+    Object.keys(rowState).forEach(id => {
+      $root.findAll(`[data-row="${id}"]`)
+          .forEach(row => {
+            row.style.height = rowState[id] + 'px';
+          });
+    });
+  }
+  if (dataState) {
+    Object.keys(dataState).forEach(id => {
+      $root.find(`[data-id="${id}"]`).textContent(parse(dataState[id]));
+    });
+  }
+}
 
 export function matrix($target, $current) {
   const target = $target.getDataID(true);
