@@ -1,2 +1,3 @@
-# my-excel
-Creating excel by using Pure JavaScript
+# My-Excel Study Project
+ Create excel and  own mini-library by using Pure JavaScript , to understand class, OOP, FP, DOM, ES6+, Mouse events, Key events, Resize, Observer Pattern, Redux, ...  
+
