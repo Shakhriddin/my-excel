@@ -1,4 +1,6 @@
 import {ExcelComponent} from '../../core/ExcelComponent';
+import {changeTitle} from '../../redux/actions';
+import {defaultTitle} from '../../constants';
 
 export class HeaderComponent extends ExcelComponent {
   static ClassName = ['excel__header', 'header', 'container'];
@@ -9,17 +11,22 @@ export class HeaderComponent extends ExcelComponent {
       listeners: ['input'],
       ...options,
     });
+    this.metaTitle = document.querySelector('title');
   }
 
   toHTML() {
+    const title = this.store.getState().title || defaultTitle;
+    this.metaTitle.textContent = title;
     return `
     <div class="header__item">
-        <i class="header__logo fas fa-file-excel"></i>
+        <div class="header__logo">
+          <img  src="./img/excel-logo.png" alt="Excel">
+        </div>
         <input class="header__input"
                type="text"
                name="create-table"
                id="create-table"
-               value="New Table"
+               value="${title}"
                spellcheck="false"/>
       </div>
       <div class="header__item">
@@ -34,6 +41,10 @@ export class HeaderComponent extends ExcelComponent {
   }
 
   onInput(event) {
-
+    const $target = event.target;
+    $target.onblur = () => {
+      this.$dispatch(changeTitle($target.value));
+      this.metaTitle.textContent = $target.value;
+    };
   }
 }

@@ -1,9 +1,9 @@
 body {
-  overflow: hidden;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
   color: #333333;
   background-color: #f8f8f8;
+  overflow: hidden;
 
   &::-webkit-scrollbar {
     width: .5rem;

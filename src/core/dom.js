@@ -15,7 +15,7 @@ class Dom {
   }
 
   textContent(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       return this.$element.textContent = text;
     }
     return this.$element.textContent.trim();
@@ -89,6 +89,14 @@ class Dom {
     return this.data.id;
   }
 
+  attribute(name, value) {
+    if (value) {
+      this.$element.setAttribute(name, value);
+      return this;
+    }
+    return this.$element.getAttribute(name);
+  }
+
   focus() {
     this.$element.focus();
     return this;
@@ -99,6 +107,13 @@ class Dom {
       this.$element.style[key] = styles[key];
     });
   }
+
+  getStyles(styles = []) {
+    return styles.reduce((res, s) => {
+      res[s] = this.$element.style[s];
+      return res;
+    }, {});
+  }
 }
 
 export function $(selector) {
@@ -108,11 +123,12 @@ export function $(selector) {
 $.create = function(tagName, classes = []) {
   const element = document.createElement(tagName);
 
-  if (classes) {
-    for (const oneClass of classes) {
+  if (typeof classes !== 'string') {
+    classes.forEach(oneClass => {
       element.classList.add(oneClass);
-    }
+    });
   }
+
 
   return $(element);
 };

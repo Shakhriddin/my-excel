@@ -1,8 +1,8 @@
 .table {
   @include position(absolute, top, $header-height+$toolbar-height+$formula-height, left, 0);
   width: 100%;
-  max-height: calc(100% - 144px);
-  overflow: auto;
+  max-height: calc(100vh - 145px);
+  overflow: scroll;
   padding-bottom: .05rem;
 
   &::-webkit-scrollbar {
@@ -32,9 +32,7 @@
     &:nth-child(1) {
       .table__line-number, .table__column {
         border-top: 1px solid rgba(0, 0, 0, .3);
-
       }
-
     }
   }
 
@@ -50,7 +48,6 @@
     border-top: 0;
     cursor: default;
 
-
     &::selection {
       background: none;
     }
@@ -65,11 +62,9 @@
     position: relative;
     width: $cell-width;
     min-width: 2.5rem;
-    border: 1px solid rgba(0, 0, 0, .4);
-    border-top: 0;
-    border-left: 0;
+    border-right: 1px solid rgba(0, 0, 0, .4);
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
     cursor: default;
-
 
     &::selection {
       background: none;
@@ -94,6 +89,7 @@
       outline-offset: -1.5px;
       border-radius: .15rem;
       box-shadow: 0 0 0.3rem .1rem rgba(0, 0, 0, .2);
+      z-index: 5;
     }
 
     @include selection;
@@ -106,7 +102,6 @@
     background-color: $green;
     border-radius: 1px;
     opacity: 0;
-    transition: opacity .1s ease-in-out;
     z-index: 100;
 
     &:hover {
@@ -117,14 +112,13 @@
   &__col-resize {
     top: 0;
     width: 4px;
-    cursor: col-resize;
+    cursor: e-resize;
   }
 
   &__row-resize {
     left: 0;
     bottom: 0;
     height: 4px;
-    cursor: row-resize;
+    cursor: n-resize;
   }
-
 }
