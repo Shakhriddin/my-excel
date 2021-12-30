@@ -1,6 +1,8 @@
-import {ExcelComponent} from '../../core/ExcelComponent';
+import {ExcelComponent} from '../../core/ExcelComponent/ExcelComponent';
 import {changeTitle} from '../../redux/actions';
 import {defaultTitle} from '../../constants';
+import {$} from '../../core/dom/dom';
+import {ActiveRoute} from '../../core/routes/ActiveRoute';
 
 export class HeaderComponent extends ExcelComponent {
   static ClassName = ['excel__header', 'header', 'container'];
@@ -8,7 +10,7 @@ export class HeaderComponent extends ExcelComponent {
   constructor($root, options) {
     super($root, {
       name: 'HeaderComponent',
-      listeners: ['input'],
+      listeners: ['input', 'click'],
       ...options,
     });
     this.metaTitle = document.querySelector('title');
@@ -30,11 +32,11 @@ export class HeaderComponent extends ExcelComponent {
                spellcheck="false"/>
       </div>
       <div class="header__item">
-        <button class="header__btn">
-          <i class="fas fa-trash"></i>
+        <button class="header__btn" data-btn="delete">
+          <i class="fas fa-trash" data-btn="delete"></i>
         </button>
-        <button class="header__btn">
-          <i class="fas fa-sign-out-alt"></i>
+        <button class="header__btn" data-btn="exit">
+          <i class="fas fa-sign-out-alt" data-btn="exit"></i>
         </button>
       </div>
     `;
@@ -46,5 +48,18 @@ export class HeaderComponent extends ExcelComponent {
       this.$dispatch(changeTitle($target.value));
       this.metaTitle.textContent = $target.value;
     };
+  }
+
+  onClick(event) {
+    const $target = $(event.target);
+    if ($target.data.btn === 'delete') {
+      const decision = confirm('Do you really want to delete this table?');
+      if (decision) {
+        localStorage.removeItem('excel:' + ActiveRoute.param);
+        return ActiveRoute.navigate('');
+      }
+    } else if ($target.data.btn === 'exit') {
+      return ActiveRoute.navigate('');
+    }
   }
 }

@@ -90,7 +90,7 @@ class Dom {
   }
 
   attribute(name, value) {
-    if (value) {
+    if (value !== undefined && value !== null) {
       this.$element.setAttribute(name, value);
       return this;
     }

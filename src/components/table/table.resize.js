@@ -1,4 +1,4 @@
-import {$} from '../../core/dom';
+import {$} from '../../core/dom/dom';
 
 export function resizerHandler($root, event) {
   return new Promise(resolve => {
