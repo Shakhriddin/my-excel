@@ -1,5 +1,5 @@
-import {range} from '../../core/utils';
-import {parse} from '../../core/parse';
+import {range} from '../../core/functions/utils';
+import {parse} from '../../core/functions/parse';
 
 export function initTable($root, {colState, rowState, dataState}) {
   if (colState) {

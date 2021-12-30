@@ -1,4 +1,4 @@
-import {DOMListener} from './DOMListener';
+import {DOMListener} from '../dom/DOMListener';
 
 export class ExcelComponent extends DOMListener {
   constructor($root, options = {}) {
@@ -23,8 +23,8 @@ export class ExcelComponent extends DOMListener {
   }
 
   $subscribe(eventName, func) {
-    this.emitter.subscribe(eventName, func);
-    this.unsubscribers.push(func);
+    const unsubscriber = this.emitter.subscribe(eventName, func);
+    this.unsubscribers.push(unsubscriber);
   }
 
   $dispatch(action) {
@@ -46,6 +46,6 @@ export class ExcelComponent extends DOMListener {
 
   destroy() {
     this.removeDOMListeners();
-    this.unsubscribers.forEach(unsub => unsub());
+    this.unsubscribers.forEach(unsubscribe => unsubscribe());
   }
 }

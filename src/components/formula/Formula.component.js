@@ -1,4 +1,4 @@
-import {ExcelComponent} from '../../core/ExcelComponent';
+import {ExcelComponent} from '../../core/ExcelComponent/ExcelComponent';
 
 export class FormulaComponent extends ExcelComponent {
   static ClassName = ['excel__formula', 'formula', 'container'];
@@ -28,7 +28,7 @@ export class FormulaComponent extends ExcelComponent {
   init() {
     super.init();
     this.$formulaInput = this.$root.find('#formula__input');
-    this.$subscribe('TableComponent:select', ($cell) => {
+    this.$subscribe('TableComponent:select', $cell => {
       this.$formulaInput.textContent($cell.data.value);
     });
     this.$subscribe('ToolbarComponent:click', style => {
