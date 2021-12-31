@@ -1,4 +1,4 @@
-import {storage} from '../core/functions/utils';
+import {storage} from './utils';
 
 function toHTML(key) {
   const model = storage(key);
@@ -12,7 +12,10 @@ function toHTML(key) {
       ${model.title}
     </a>
     <span>
-      <strong>${date.getHours()}:${date.getMinutes()}</strong>
+      <strong>
+       ${date.getHours()}:
+       ${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}
+      </strong>
       <small>${date.toLocaleDateString()}</small>
     </span>
   </li>`;

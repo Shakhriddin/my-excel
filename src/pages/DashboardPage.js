@@ -1,6 +1,6 @@
-import {Page} from '../core/Page';
+import {Page} from '../core/page/Page';
 import {$} from '../core/dom/dom';
-import {createLatestTable} from './dashboard.functions';
+import {createLatestTable} from '../core/functions/dashboard.functions';
 
 export class DashboardPage extends Page {
   getRoot() {
