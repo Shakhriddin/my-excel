@@ -22,11 +22,12 @@
   }
 
   &__input {
-    width: 6.3rem;
+    min-width: 1.5rem;
     border: 1px solid rgba(0, 0, 0, .1);
     font-size: 1.1rem;
     border-radius: .25rem;
-    padding: .15rem .5rem;
+    padding: .15rem 0;
+    text-align: center;
     caret-color: $green;
     color: rgba(0, 0, 0, .5);
     box-shadow: 0 0 .1rem .05rem rgba(0, 0, 0, .1);

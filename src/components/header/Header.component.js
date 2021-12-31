@@ -18,7 +18,7 @@ export class HeaderComponent extends ExcelComponent {
 
   toHTML() {
     const title = this.store.getState().title || defaultTitle;
-    this.metaTitle.textContent = title;
+    this.metaTitle.textContent = title + ' - My Excel';
     return `
     <div class="header__item">
         <div class="header__logo">
@@ -29,6 +29,7 @@ export class HeaderComponent extends ExcelComponent {
                name="create-table"
                id="create-table"
                value="${title}"
+               style="width:${title.trim().length * 10}px;"
                spellcheck="false"/>
       </div>
       <div class="header__item">
@@ -44,9 +45,12 @@ export class HeaderComponent extends ExcelComponent {
 
   onInput(event) {
     const $target = event.target;
+
+    $target.style.width = $target.value.trim().length * 10 + 'px';
+
     $target.onblur = () => {
       this.$dispatch(changeTitle($target.value));
-      this.metaTitle.textContent = $target.value;
+      this.metaTitle.textContent = $target.value + ' - My Excel';
     };
   }
 
