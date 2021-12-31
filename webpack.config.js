@@ -43,14 +43,7 @@ const cssLoaders = (extra) => {
 };
 
 const jsLoaders = () => {
-  const loader = [
-    {
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
-      },
-    },
-  ];
+  const loader = ['babel-loader'];
 
   if (isDev) {
     loader.push('eslint-loader');
